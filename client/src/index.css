@@ -31,9 +31,12 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 15.2em;
   line-height: 1.1;
-}
+  font-family: Calibri;
+  color: rgb(0, 255, 55);
+  text-shadow: 15px 15px 8px black;
+} 
 
 button {
   border-radius: 8px;
