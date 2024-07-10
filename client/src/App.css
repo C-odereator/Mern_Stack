@@ -3,7 +3,9 @@
     padding: 0;
     font-family: Calibri;
     background-color: black;
+    color: white;
 }
+
 .navbar{
     background-color: rgb(0, 0, 0);
     color: white;
@@ -53,22 +55,20 @@
 .register_right form{
     height: 90%;
     width: 90%;
-    border: 2px solid white;    
     display: flex;
     align-items: flex-start;
     justify-content: center;
     gap: 10px;
     border-radius: 5px;
     flex-direction: column;
-    box-shadow: 2px 2px 3px 2px red;
 }
 .register_right label{
     font-size: 1.5vw;
-    margin-left: 150px;
+    margin-left: 10px;
     text-shadow: 1px 1px 2px rgb(255, 0, 0);
 }
 .register_right input{
-    margin-left: 150px;
+    margin-left: 10px;
     width: 50%;
     border: 1px solid white;
     padding: 10px 10px;
@@ -83,4 +83,84 @@
     color: black;
     font-weight: bold;
     box-shadow: 1px 1px 1px 1px red;
+}
+.register_right form h1{
+    font-size: 4vw;
+    margin-bottom: 20px;
+}
+::placeholder{
+    color:fff;
+    font-size: 1.2rem;
+}
+.login {
+    height: 88vh;
+    display: flex;
+    width: 100%;
+    background-image: url('https://blogger.googleusercontent.com/img/a/AVvXsEiRCg6H343bupuZb4v3f24Lr_bisHkpD0_K04g9ADV6fvb533Yja0ntO6TicKtIwBVcLLgL_dgnJy_uo6PSmVMmfiXtFnT7fqoFPDxaTVc2FBr84LbEASdURgTkeoH3Kti7Gib_ffHDhoFDKt3ZD80eGPosfQ7WdwBZP8qc392JGdP2AZ6tgzuo4S_vTX9Z=s1600-rw');
+    background-size: cover;
+    justify-content:start;
+    align-items: center;
+}
+
+.login_right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    background-color: transparent;
+    margin-left: 150px;
+    margin-bottom: 100px;
+}
+.login_right form {
+    height: 90%;
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 5px;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.login_right label {
+    font-size: 1.5vw;
+    margin-left: 10px;
+    text-shadow: 1px 1px 2px rgb(255, 0, 0);
+    background-color: transparent;
+}
+
+.login_right input {
+    margin-left: 10px;
+    width: 50%;
+    border: 1px solid white;
+    padding: 10px 10px;
+    color: white;
+    border-radius: 4px;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+.login_right input[type=submit] {
+    width: 54%;
+    font-size: 1.4vw;
+    margin-top: 30px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px 1px red;
+}
+
+.login_right form h1 {
+    font-size: 4vw;
+    margin-bottom: 20px;
+    margin-left: 6px;
+    background-color: transparent;
+}
+.error h1{
+    margin-top: 100px;
+    font-size: 20vw;
+    text-align: center;
 }

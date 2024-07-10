@@ -36,6 +36,7 @@ const Register = () => {
         </div>
         <div className="register_right">
           <form onSubmit={handleSubmit}>
+            <h1>Registration Form</h1>
             <label htmlFor="username">Username</label>
             <input
               type="text"
