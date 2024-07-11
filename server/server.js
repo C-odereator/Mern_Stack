@@ -1,15 +1,22 @@
 const express = require("express");
+const cors = require("cors");
 const { router } = require("./Router/router");
 const { contact } = require("./Router/contact");
 const { connectDB } = require("./Connection/Connect");
 
 const app = express();
-const port = 8081;
+const port = 5000;
 require("dotenv").config();
 
-// middleware to access data from the body
-app.use(express.json());
+const corsOptions = {
+  origin: "http://localhost:5173",
+  methods: "GET, POST, DELETE, PATCH, HEAD",
+  credentials: true,
+};
 
+// middleware to access data from the body
+app.use(cors(corsOptions));
+app.use(express.json());
 // connection
 connectDB(process.env.mongo_url);
 

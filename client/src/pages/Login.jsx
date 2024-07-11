@@ -1,11 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-
+  const navigate = useNavigate();
   const handleInput = (e) => {
     console.log(e);
     let name = e.target.name;
@@ -17,9 +19,28 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
+    try {
+      const response = await fetch("http://localhost:5000/router/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        setUser({ email: "", password: "" });
+        navigate("/");
+        alert("Login Successful");
+      }
+      console.log(response);
+    } catch (err) {
+      console.log("register", err);
+      alert("Error", err);
+    }
   };
 
   return (
