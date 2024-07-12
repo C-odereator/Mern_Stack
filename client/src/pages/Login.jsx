@@ -43,7 +43,7 @@ const Login = () => {
         storetokenInLS(res_data.token);
         setUser({ email: "", password: "" });
         navigate("/");
-        alert("Login Successful");
+        // alert("Login Successful");
       }
       console.log(response);
     } catch (err) {
