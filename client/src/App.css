@@ -164,3 +164,13 @@
     font-size: 20vw;
     text-align: center;
 }
+
+.login textarea {
+    margin-left: 10px;
+    width: 50%;
+    border: 1px solid white;
+    padding: 10px 10px;
+    color: white;
+    border-radius: 4px;
+    background-color: transparent;
+}
