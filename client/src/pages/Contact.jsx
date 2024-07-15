@@ -1,6 +1,51 @@
 import React from "react";
-
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const Contact = () => {
+  // handling the user for storing the data
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    address: "",
+  });
+
+  const navigate = useNavigate();
+  // store data from the input
+  const handleInput = (e) => {
+    // console.log(e);
+    let name = e.target.name;
+    let value = e.target.value;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+
+  // handling the event at submitting the form
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(user);
+    try {
+      const response = await fetch("http://localhost:5000/contact/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        const res_data = await response.json();
+        console.log(res_data);
+        setUser({ username: "", email: "", address: "" });
+        navigate("/services");
+      }
+      console.log(response);
+    } catch (err) {
+      console.log("register", err);
+    }
+  };
+
   return (
     <div>
       <div
@@ -13,23 +58,29 @@ const Contact = () => {
         }}
       >
         <div className="login_right">
-          <form /*onSubmit={handleSubmit}*/>
+          <form onSubmit={handleSubmit}>
             <h1
               style={{
                 textShadow: "3px 3px 3px black",
+                position: "absolute",
+                left: "57%",
+                top: "35%",
+                fontSize: "8rem",
               }}
             >
               Contact
             </h1>
-            <label htmlFor="Username">Username</label>
+            <label htmlFor="Username" style={{ marginTop: "100px" }}>
+              Username
+            </label>
             <input
-              type="Username"
-              id="Username"
-              className="Username"
-              name="Username"
-              placeholder="Enter your Username"
-              // onChange={handleInput}
-              // value={user.email}
+              type="username"
+              id="username"
+              className="username"
+              name="username"
+              placeholder="Enter your username"
+              onChange={handleInput}
+              value={user.username}
             />
             <label htmlFor="email">Email</label>
             <input
@@ -38,10 +89,10 @@ const Contact = () => {
               className="email"
               name="email"
               placeholder="Enter your Email"
-              // onChange={handleInput}
-              // value={user.password}
+              onChange={handleInput}
+              value={user.email}
             />
-            <label htmlFor="email">Address</label>
+            <label htmlFor="address">Address</label>
             <textarea
               cols="56"
               rows="7"
@@ -49,6 +100,8 @@ const Contact = () => {
               className="address"
               name="address"
               placeholder="Enter your address"
+              onChange={handleInput}
+              value={user.address}
             ></textarea>
             <input type="submit" value="Submit" />
           </form>
