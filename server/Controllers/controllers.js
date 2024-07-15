@@ -60,8 +60,21 @@ const login = async (req, res) => {
   }
 };
 
+const user = async (req, res) => {
+  try {
+    // const userData = req.user;
+    // console.log(userData);
+    res.status(200).json({
+      msg: "hello",
+    });
+  } catch (error) {
+    console.log(`Error : ${error}`);
+  }
+};
+
 module.exports = {
   home,
   login,
   register,
+  user,
 };

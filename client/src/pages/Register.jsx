@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import Image from "../assets/Register-Back.png";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Store/Auth";
-
 const Register = () => {
   const [user, setUser] = useState({
     username: "",
@@ -54,11 +54,7 @@ const Register = () => {
     <>
       <div className="register">
         <div className="register_left">
-          <img
-            src="https://browsecat.art/sites/default/files/deer-black-wallpapers-104598-288765-5179775.png"
-            height={"100%"}
-            alt=""
-          />
+          <img src={Image} height={"100%"} alt="" />
         </div>
         <div className="register_right">
           <form onSubmit={handleSubmit}>
