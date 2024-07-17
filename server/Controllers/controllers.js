@@ -62,11 +62,10 @@ const login = async (req, res) => {
 
 const user = async (req, res) => {
   try {
-    // const userData = req.user;
-    // console.log(userData);
-    res.status(200).json({
-      msg: "hello",
-    });
+    const userData = req.user;
+    console.log(req.user);
+    // res.send("hello guys");
+    res.status(200).json({ userData });
   } catch (error) {
     console.log(`Error : ${error}`);
   }
