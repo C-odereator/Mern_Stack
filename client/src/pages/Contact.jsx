@@ -16,8 +16,9 @@ const Contact = () => {
 
   if (userData && users) {
     setUser({
-      username: userData.users.username,
-      email: userData.users.email,
+      username: users.username,
+      email: users.email,
+      message: "",
     });
     setUserData(false);
   }
