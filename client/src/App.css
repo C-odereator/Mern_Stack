@@ -174,3 +174,28 @@
     border-radius: 4px;
     background-color: transparent;
 }
+.services{
+    border: 2px solid white;
+    height: 400px;
+    width: 23%;
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.services .img{
+    height: 50%;
+    width: 100%;
+}
+.content11{
+    margin-top: 10px;
+}
+.content11 > *{
+    font-family:Lucida Sans Unicode;
+    /* font-family: Times New Roman; */
+    width: 85%;
+    margin: auto;
+}
+.content11 p:nth-of-type(4){
+    text-align: justify;
+}
+ 
