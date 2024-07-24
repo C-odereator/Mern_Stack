@@ -3,6 +3,9 @@ import { useAuth } from "../Store/Auth";
 const Service = () => {
   const { contact } = useAuth();
   // console.log(contact[0].description);
+  if (!contact) {
+    return <div>Loading...</div>; // Or handle loading state as needed
+  }
   return (
     <div>
       {contact.map((cont, index) => (

@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [users, setUsers] = useState();
   const [contact, setContact] = useState();
   const storetokenInLS = (servertoken) => {
+    setToken(servertoken);
     return localStorage.setItem("token", servertoken);
   };
 
@@ -48,9 +49,9 @@ export const AuthProvider = ({ children }) => {
         console.log(data);
       }
     } catch (error) {
-      console.log("Error",error);
+      console.log("Error", error);
     }
-  }
+  };
 
   useEffect(() => {
     getServices();
@@ -59,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, storetokenInLS, LogoutUser, users,contact }}
+      value={{ isLoggedIn, storetokenInLS, LogoutUser, users, contact }}
     >
       {children}
     </AuthContext.Provider>
