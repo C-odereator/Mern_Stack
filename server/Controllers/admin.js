@@ -1,5 +1,6 @@
 const { User } = require("../Models/models");
 const { Contact } = require("../Models/contact");
+
 const getAllUser = async (req, res) => {
   try {
     const user = await User.find({}, { password: 0 });
@@ -24,7 +25,22 @@ const getAllContact = async (req, res) => {
     req.status(400).json({ msg: "Error" });
   }
 };
+
+const deleteUserById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.deleteOne({ _id: id });
+    if (!user) {
+      return res.status(404).json({ message: "No user found" });
+    }
+    res.status(200).json({ message: "User deleted" });
+  } catch (error) {
+    res.status(400).json({ msg: "Error" });
+  }
+};
+
 module.exports = {
   getAllUser,
   getAllContact,
+  deleteUserById,
 };

@@ -9,6 +9,9 @@ import Login from "./pages/Login";
 import Navbar from "./Components/Navbar";
 import Error from "./pages/Error";
 import Logout from "./pages/Logout";
+import AdminLayout from "./Components/Layout/AdminLayout";
+import AdminUser from "./pages/AdminUser";
+import AdminContact from "./pages/AdminContact";
 
 function App() {
   return (
@@ -24,6 +27,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="*" element={<Error />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="user" element={<AdminUser />}></Route>
+            <Route path="contact" element={<AdminContact />}></Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
