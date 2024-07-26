@@ -26,6 +26,38 @@ const getAllContact = async (req, res) => {
   }
 };
 
+const getUserById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findOne({ _id: id }, { password: 0 });
+    if (!user) {
+      return res.status(404).json({ message: "No user found" });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ msg: "Error" });
+  }
+};
+
+const updateUserById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const updateUserData = req.body;
+    const updatedData = await User.updateOne(
+      { _id: id },
+      {
+        $set: updateUserData,
+      }
+    );
+    if (!updateUser) {
+      return res.status(404).json({ message: "No user found" });
+    }
+    res.status(200).json(updatedData);
+  } catch (error) {
+    res.status(400).json({ msg: "Error" });
+  }
+};
+
 const deleteUserById = async (req, res) => {
   try {
     const id = req.params.id;
@@ -43,4 +75,6 @@ module.exports = {
   getAllUser,
   getAllContact,
   deleteUserById,
+  getUserById,
+  updateUserById,
 };
