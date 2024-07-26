@@ -12,7 +12,7 @@ const admin = express.Router();
 admin.route("/").get(getMiddleware, adminMiddleware, getAllUser);
 
 admin
-  .route("delete/:id")
+  .route("/delete/:id")
   .delete(getMiddleware, adminMiddleware, deleteUserById);
 
 admin.route("/contact").get(getAllContact);

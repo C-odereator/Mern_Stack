@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../Store/Auth";
+import { NavLink } from "react-router-dom";
 import { MdOutlineBrowserUpdated } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 const AdminUser = () => {
   const [users, setUser] = useState([]);
   const { authorizationToken } = useAuth();
+
   const getAllUserData = async () => {
     try {
       const response = await fetch("http://localhost:5000/admin", {
@@ -31,8 +33,9 @@ const AdminUser = () => {
       });
       const data = await response.json();
       console.log("After Delete : " + data);
+      setUser(users.filter((user) => user._id !== id));
     } catch (error) {
-      // console.log("Error : " + error);
+      console.log("Error : " + error);
     }
   };
 
@@ -57,17 +60,19 @@ const AdminUser = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user, index) => {
+              {users.map((user) => {
                 return (
                   <>
-                    <tr scope="row" key={index}>
+                    <tr key={user._id}>
                       <td>{user.username}</td>
                       <td>{user.email}</td>
                       <td>{user.phone}</td>
                       <td>
-                        <button className="btn btn-primary">
-                          <MdOutlineBrowserUpdated />
-                        </button>
+                        <NavLink to={`/admin/${user._id}/edit`}>
+                          <button className="btn btn-primary">
+                            <MdOutlineBrowserUpdated />
+                          </button>
+                        </NavLink>
                       </td>
                       <td>
                         <button onClick={() => deleteUser(user._id)}>

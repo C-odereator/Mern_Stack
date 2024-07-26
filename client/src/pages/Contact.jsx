@@ -24,6 +24,7 @@ const Contact = () => {
 
   const navigate = useNavigate();
   // store data from the input
+  
   const handleInput = (e) => {
     // console.log(e);
     let name = e.target.name;
