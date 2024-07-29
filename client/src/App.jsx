@@ -13,11 +13,8 @@ import AdminLayout from "./Components/Layout/AdminLayout";
 import AdminUser from "./pages/AdminUser";
 import AdminContact from "./pages/AdminContact";
 import AdminUpdate from "./pages/AdminUpdate";
-import { useState } from "react";
 
 function App() {
-  const [id, setId] = useState("668facac095222d21c1405ec");
-
   return (
     <>
       <BrowserRouter>
@@ -34,7 +31,7 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="user" element={<AdminUser />}></Route>
             <Route path="contact" element={<AdminContact />}></Route>
-            <Route path={`${id}/edit`} element={<AdminUpdate />}></Route>
+            <Route path="edit/:id" element={<AdminUpdate />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

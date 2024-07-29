@@ -19,9 +19,7 @@ admin
   .route("/delete/:id")
   .delete(getMiddleware, adminMiddleware, deleteUserById);
 
-admin
-  .route("/update/:id")
-  .patch(getMiddleware, adminMiddleware, updateUserById);
+admin.route("/edit/:id").patch(getMiddleware, adminMiddleware, updateUserById);
 
 admin.route("/contact").get(getAllContact);
 

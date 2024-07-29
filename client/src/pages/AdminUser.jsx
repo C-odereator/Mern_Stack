@@ -68,7 +68,7 @@ const AdminUser = () => {
                       <td>{user.email}</td>
                       <td>{user.phone}</td>
                       <td>
-                        <NavLink to={`/admin/${user._id}/edit`}>
+                        <NavLink to={`/admin/edit/${user._id}`}>
                           <button className="btn btn-primary">
                             <MdOutlineBrowserUpdated />
                           </button>

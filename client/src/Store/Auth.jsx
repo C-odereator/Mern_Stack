@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
       });
       if (response.ok) {
         const data = await response.json();
-        // console.log(data.userData);
+        // console.log(data.userData._id);
         setUsers(data.userData);
       }
     } catch (error) {
@@ -53,6 +53,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.log("Error", error);
     }
+    // console.log(users);
   };
 
   useEffect(() => {

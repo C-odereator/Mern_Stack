@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "../assets/Register-Back.png";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Store/Auth";
+
 const Register = () => {
   const [user, setUser] = useState({
     username: "",
@@ -25,7 +26,6 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
     try {
       const response = await fetch("http://localhost:5000/router/register", {
         method: "POST",
