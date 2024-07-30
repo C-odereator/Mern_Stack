@@ -49,12 +49,13 @@ const updateUserById = async (req, res) => {
         $set: updateUserData,
       }
     );
-    if (!updateUser) {
+    if (!updatedData) {
       return res.status(404).json({ message: "No user found" });
     }
     res.status(200).json(updatedData);
   } catch (error) {
     res.status(400).json({ msg: "Error" });
+    console.log("Error"+error);
   }
 };
 

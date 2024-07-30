@@ -1,41 +1,43 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useAuth } from "../Store/Auth";
-import Image from "../assets/Register-Back.png";
-
+import { useParams } from "react-router-dom";
+import Image from "../assets/dark.avif";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const AdminUpdate = () => {
   const [user, setUser] = useState({
     username: "",
     email: "",
     phone: "",
-    password: "",
   });
 
-  const [userData, setUserData] = useState(true);
-  const { users } = useAuth();
+  const navigate = useNavigate();
+  const param = useParams();
+  // console.log("params ", param);
+  const { authorizationToken } = useAuth();
 
-  // if (userData && users) {
-  //   setUser({
-  //     username: users.username,
-  //     email: users.email,
-  //     phone: users.phone,
-  //     // password: users.passwor
-  //   });
-  //   setUserData(false);
-  // }
+  const getSingleUserData = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/admin/${param.id}`, {
+        method: "GET",
+        headers: {
+          Authorization: authorizationToken,
+        },
+      });
+      const data = await response.json();
+      console.log("User Single Data : ", data);
+      setUser(data);
+    } catch (error) {
+      console.log("Error ", error);
+    }
+  };
 
   useEffect(() => {
-    if (users && userData) {
-      setUser({
-        username: users.username || "",
-        email: users.email || "",
-        phone: users.phone || "",
-        password: "", // assuming you don't want to show password in the form
-      });
-    }
-  }, [users]);
+    getSingleUserData();
+  }, []);
+
   const handleInput = (e) => {
-    // console.log(e);
     let name = e.target.name;
     let value = e.target.value;
 
@@ -45,15 +47,24 @@ const AdminUpdate = () => {
     });
   };
 
-  const updateUser = async (id) => {
+  const updateUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/admin/edit/${id}`, {
-        method: "PATCH",
-        headers: {
-          Authorization: authorizationToken,
-        },
-      });
+      const response = await fetch(
+        `http://localhost:5000/admin/edit/${param.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: authorizationToken,
+          },
+          body: JSON.stringify(user),
+        }
+      );
+      if (response.ok) {
+        toast.success("Update SuccessFully");
+        navigate("/admin/user");
+      }
       if (response.ok) {
         const res_data = await response.json();
         console.log(res_data);
@@ -65,13 +76,13 @@ const AdminUpdate = () => {
 
   return (
     <>
-      <div className="register">
+      <div className="register" style={{ background: "black", height: "75vh" }}>
         <div className="register_left">
-          <img src={Image} height={"100%"} alt="" />
+          <img src={Image} height={"90%"} alt="" />
         </div>
-        <div className="register_right">
+        <div className="register_right" style={{ marginBottom: "50px" }}>
           <form onSubmit={updateUser}>
-            <h1>Registration Form</h1>
+            <h1>Update Data</h1>
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -102,16 +113,7 @@ const AdminUpdate = () => {
               onChange={handleInput}
               value={user.phone}
             />
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              className="password"
-              name="password"
-              placeholder="Enter your password"
-              onChange={handleInput}
-              value={user.password}
-            />
+
             <input type="submit" value="Update Data" />
           </form>
         </div>
