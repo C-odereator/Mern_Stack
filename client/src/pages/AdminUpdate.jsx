@@ -113,7 +113,6 @@ const AdminUpdate = () => {
               onChange={handleInput}
               value={user.phone}
             />
-
             <input type="submit" value="Update Data" />
           </form>
         </div>
