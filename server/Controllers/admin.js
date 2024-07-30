@@ -22,7 +22,7 @@ const getAllContact = async (req, res) => {
     }
     res.status(200).json(user);
   } catch (error) {
-    req.status(400).json({ msg: "Error" });
+    req.status(400).json({ msg: "Error aa raha hai" });
   }
 };
 
@@ -55,7 +55,7 @@ const updateUserById = async (req, res) => {
     res.status(200).json(updatedData);
   } catch (error) {
     res.status(400).json({ msg: "Error" });
-    console.log("Error"+error);
+    console.log("Error" + error);
   }
 };
 

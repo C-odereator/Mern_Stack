@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../Store/Auth";
+import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
 import { MdOutlineBrowserUpdated } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
@@ -33,6 +34,7 @@ const AdminUser = () => {
       });
       const data = await response.json();
       console.log("After Delete : " + data);
+      toast.success("Delete Successfully");
       setUser(users.filter((user) => user._id !== id));
     } catch (error) {
       console.log("Error : " + error);

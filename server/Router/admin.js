@@ -21,7 +21,7 @@ admin
 
 admin.route("/edit/:id").patch(getMiddleware, adminMiddleware, updateUserById);
 
-admin.route("/contact").get(getAllContact);
+admin.route("/contact").get(getMiddleware, adminMiddleware, getAllContact);
 
 module.exports = {
   admin,
