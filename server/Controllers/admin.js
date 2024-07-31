@@ -22,7 +22,7 @@ const getAllContact = async (req, res) => {
     }
     res.status(200).json(user);
   } catch (error) {
-    req.status(400).json({ msg: "Error aa raha hai" });
+    res.status(400).json({ msg: "Error aa raha hai" });
   }
 };
 
