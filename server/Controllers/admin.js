@@ -10,17 +10,17 @@ const getAllUser = async (req, res) => {
     res.status(200).json(user);
     // console.log(user);
   } catch (error) {
-    req.status(400).json({ msg: "Error" });
+    res.status(400).json({ msg: "Error" });
   }
 };
 
 const getAllContact = async (req, res) => {
   try {
-    const user = await Contact.find({}, { password: 0 });
-    if (!user || user.length === 0) {
-      return res.status(404).json({ message: "No user found" });
+    const contact = await Contact.find();
+    if (!contact || contact.length === 0) {
+      return res.status(404).json({ message: "No contact found" });
     }
-    res.status(200).json(user);
+    res.status(200).json(contact);
   } catch (error) {
     res.status(400).json({ msg: "Error aa raha hai" });
   }
@@ -35,7 +35,7 @@ const getUserById = async (req, res) => {
     }
     res.status(200).json(user);
   } catch (error) {
-    res.status(400).json({ msg: "Error" });
+    res.status(400).json({ msg: "Error Hello" });
   }
 };
 

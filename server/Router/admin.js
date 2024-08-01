@@ -13,6 +13,8 @@ const admin = express.Router();
 
 admin.route("/").get(getMiddleware, adminMiddleware, getAllUser);
 
+admin.route("/contact").get(getMiddleware, adminMiddleware, getAllContact);
+
 admin.route("/:id").get(getMiddleware, adminMiddleware, getUserById);
 
 admin
@@ -20,8 +22,6 @@ admin
   .delete(getMiddleware, adminMiddleware, deleteUserById);
 
 admin.route("/edit/:id").patch(getMiddleware, adminMiddleware, updateUserById);
-
-admin.route("/contact").get(getMiddleware, adminMiddleware, getAllContact);
 
 module.exports = {
   admin,

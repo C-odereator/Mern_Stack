@@ -14,7 +14,9 @@ const AdminContact = () => {
         },
       });
       const data = await response.json();
-      setContact(data);
+      if (response.ok) {
+        setContact(data);
+      }
     } catch (error) {
       console.log("Error", error);
     }
@@ -28,7 +30,7 @@ const AdminContact = () => {
     <div>
       {contact.length > 0 ? (
         contact.map((cont, index) => (
-          <h1 key={index}>{cont}</h1> // Assuming 'cont' is a string or has a string property
+          <h1 key={index}>{cont.name}</h1> // Assuming 'cont' is a string or has a string property
         ))
       ) : (
         <div>No contacts available</div>
