@@ -5,6 +5,7 @@ const {
   deleteUserById,
   getUserById,
   updateUserById,
+  deleteContactById,
 } = require("../Controllers/admin");
 
 const { getMiddleware } = require("../Middlewares/auth");
@@ -16,6 +17,10 @@ admin.route("/").get(getMiddleware, adminMiddleware, getAllUser);
 admin.route("/contact").get(getMiddleware, adminMiddleware, getAllContact);
 
 admin.route("/:id").get(getMiddleware, adminMiddleware, getUserById);
+
+admin
+  .route("/contactdelete/:id")
+  .delete(getMiddleware, adminMiddleware, deleteContactById);
 
 admin
   .route("/delete/:id")

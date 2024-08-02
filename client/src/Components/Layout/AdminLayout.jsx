@@ -2,9 +2,16 @@ import React from "react";
 import { FaUser, FaHome } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
 import { GrServices } from "react-icons/gr";
-import { NavLink, Outlet } from "react-router-dom";
+import { useAuth } from "../../Store/Auth";
+import { NavLink, Navigate, Outlet } from "react-router-dom";
 import "./admin.css";
 const AdminLayout = () => {
+  const { users } = useAuth();
+
+  // if (!users.isAdmin) {
+  //   <Navigate to="/" />;
+  // }
+
   return (
     <>
       <div className="container">
